@@ -1,0 +1,11 @@
+[project]
+name = "mini-site-django"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django-chartjs>=2.3.0",
+    "django>=5.1.2",
+    "setuptools>=75.1.0",
+]

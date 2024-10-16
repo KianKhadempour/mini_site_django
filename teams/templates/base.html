@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      {% block title %}
+        Templeton Mini School
+      {% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Mini Teams" />
+    <link rel="stylesheet" type="text/css" href="{% static 'teams/css/styles.css' %}" />
+    <link rel="icon" href="favicon.png" />
+    {% block extendhead %}
+
+    {% endblock %}
+  </head>
+  <body>
+    <main class="container">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+  </body>
+</html>

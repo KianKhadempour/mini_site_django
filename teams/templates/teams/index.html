@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="section">
+    <div class="columns">
+      <div class="column has-text-centered">
+        <h1 class="title">Teams</h1><br />
+      </div>
+    </div>
+    <div id="app" class="grid">
+      {% for team in teams %}
+        <div class="cell">
+          <a href="{% url 'teams:team_detail' team.id %}">
+            <div class="card large equal-height is-hoverable">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4 p-0">{{ team.name }}</p>
+                  </div>
+                </div>
+                <div class="content has-text-centered points-wrapper">
+                  <h1 class="points">{{ team.points }}</h1>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

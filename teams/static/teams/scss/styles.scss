@@ -1,0 +1,68 @@
+@use "bulma/base";
+@use "bulma/themes";
+@use "bulma/utilities/css-variables.scss" as cv;
+
+@use "bulma/layout/container.scss";
+@use "bulma/layout/section.scss";
+@use "bulma/grid/columns.scss";
+@use "bulma/grid/grid.scss";
+@use "bulma/components/card.scss";
+@use "bulma/elements/image.scss";
+@use "bulma/elements/title.scss";
+@use "bulma/elements/content.scss";
+@use "bulma/elements/table.scss";
+@use "bulma/helpers/aspect-ratio.scss";
+@use "bulma/helpers/spacing.scss";
+@use "bulma/helpers/typography.scss";
+@use "bulma/helpers/visibility.scss";
+
+.card:hover {
+    background-color: cv.getVar("scheme-main-ter");
+}
+
+/* Alternative using media query for system preference */
+@media (prefers-color-scheme: dark) {
+    .card {
+        --bulma-card-shadow: none;
+        background-color: cv.getVar("background");
+
+        :hover {
+            background-color: cv.getVar("scheme-main-ter");
+        }
+    }
+
+}
+
+
+.equal-height {
+    height: 100%;
+}
+
+/* Make the card content have a consistent height */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Ensure the title takes up its space but does not affect the points display */
+.media-content {
+    flex-grow: 1;
+}
+
+/* Keep the points at a fixed height */
+.points-wrapper {
+    flex-grow: 0;
+    height: 200px;
+    /* You can adjust this height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for the points */
+h1.points {
+    font-size: 5em;
+    line-height: 1;
+}
