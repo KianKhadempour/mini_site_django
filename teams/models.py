@@ -1,5 +1,6 @@
 import datetime as dt
 import enum
+from calendar import JUNE, SEPTEMBER
 
 from django.db import models
 from django.urls import reverse
@@ -80,7 +81,7 @@ class Team(models.Model):
         return self.name
 
     def __repr__(self):
-        return f"Team({self.name}, {self.points()})"
+        return f'Team(name="{self.name}", points={self.points()})'
 
     def get_absolute_url(self):
         return reverse("teams:team_detail", args=[self.pk])
@@ -148,9 +149,11 @@ class CurrentSchoolYearManager(models.Manager):
     def get_queryset(self):
         now = timezone.now()
         start_date = timezone.make_aware(
-            dt.datetime(now.year if now.month >= 9 else now.year - 1, 9, 1)
+            dt.datetime(
+                now.year if now.month >= SEPTEMBER else now.year - 1, SEPTEMBER, 1
+            )
         )
-        end_date = timezone.make_aware(dt.datetime(start_date.year + 1, 9, 1))
+        end_date = timezone.make_aware(dt.datetime(start_date.year + 1, JUNE, 30))
         return (
             super()
             .get_queryset()
