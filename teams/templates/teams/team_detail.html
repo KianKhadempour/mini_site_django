@@ -1,26 +1,41 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
 {% block title %}
-  {{ team.name }} - Templeton Mini School
-{% endblock %}
-
+  {{ team.name }} - Teams
+{% endblock title %}
 {% block extendhead %}
-  <script defer type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
-  <script defer type="text/javascript" src="{% static 'js/teams.js' %}"></script>
-{% endblock %}
-
+  <link rel="stylesheet" href="{% static 'teams/css/team_detail.css' %}" />
+  <script defer>
+    (async () => {
+      const response = await fetch("{% url 'team-chart' team.id %}");
+      const data = await response.json();
+    
+      const ctx = document.getElementById('chart');
+      Chart.defaults.color = getComputedStyle(document.body).getPropertyValue('--copy');
+      Chart.defaults.font.family = getComputedStyle(document.body).getPropertyValue('--text-font');
+      Chart.defaults.font.size = 16;
+      new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { suggestedMin: 0 }
+          }
+        }
+      });
+    })();
+  </script>
+{% endblock extendhead %}
+{% block header %}
+  <h1>{{ team.name }}</h1>
+{% endblock header %}
 {% block content %}
-  <div class="section">
-    <div class="columns">
-      <div class="column has-text-centered">
-        <h1 class="title is-1">{{ team.name }}</h1><br />
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <div class="title">Students</div>
-        <table class="table is-fullwidth is-hoverable is-striped is-bordered">
+  <main>
+    <section class="tables">
+      <div class="table">
+        <h2>Students</h2>
+        <table>
           <thead>
             <tr>
               <th>Student</th>
@@ -30,16 +45,16 @@
           <tbody>
             {% for student in students %}
               <tr>
-                <th>{{ student.first_name }} {{ student.last_name }}</th>
-                <td>{{ student.grade }}</td>
+                <th>{{ student.full_name }}</th>
+                <td class="number">{{ student.grade }}</td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
       </div>
-      <div class="column">
-        <div class="title">Point History</div>
-        <table class="table is-fullwidth is-hoverable is-striped is-bordered">
+      <div class="table">
+        <h2>Point History</h2>
+        <table>
           <thead>
             <tr>
               <th>Event</th>
@@ -48,28 +63,28 @@
             </tr>
           </thead>
           <tbody>
-            {% if point_events %}
-              {% for point_event in point_events %}
-                <tr>
-                  {% if point_event.description %}
-                    <th>
-                      <abbr title="{{ point_event.description }}">{{ point_event.name }}</abbr>
-                    </th>
-                  {% else %}
-                    <th>{{ point_event.name }}</th>
-                  {% endif %}
-                  <td>{{ point_event.points }}</td>
-                  <td>{{ point_event.created_at|date }}</td>
-                </tr>
-              {% endfor %}
-            {% else %}
+            {% for point_event in point_events %}
               <tr>
-                <th colspan="3">No Points 😔</th>
+                <th>
+                  {% if point_event.description %}
+                    <div class="abbr" text="{{ point_event.description }}" tabindex="0">{{ point_event.name }}</div>
+                  {% else %}
+                    {{ point_event.name }}
+                  {% endif %}
+                </th>
+                <td class="number">{{ point_event.points }}</td>
+                <td>{{ point_event.created_at|date }}</td>
               </tr>
-            {% endif %}
+            {% endfor %}
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-{% endblock %}
+    </section>
+    <section class="chart">
+      <h2>Points Over Time</h2>
+      <div>
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+  </main>
+{% endblock content %}

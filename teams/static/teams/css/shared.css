@@ -1,0 +1,110 @@
+/* variables */
+:root {
+  --primary: #9b84ee;
+  --primary-content: #210e65;
+  --primary-dark: #7757e8;
+  --primary-light: #bfb1f4;
+
+  --secondary: #ee84d7;
+  --secondary-content: #650e52;
+  --secondary-dark: #e857c8;
+  --secondary-light: #f4b1e6;
+
+  --background: #18161d;
+  --foreground: #24212b;
+  --border: #3b3848;
+
+  --copy: #fbfbfc;
+  --copy-light: #d6d4de;
+  --copy-lighter: #9f9bb1;
+
+  --success: #84ee84;
+  --warning: #eeee84;
+  --error: #ee8484;
+  --success-content: #0e650e;
+  --warning-content: #65650e;
+  --error-content: #650e0e;
+
+  --header-font: "DM Serif Display", serif;
+  --text-font: "DM Sans", sans-serif;
+  --number-font: "DM Mono", monospace;
+}
+
+/* mini reset */
+body {
+  margin: 0;
+  background-color: var(--background);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+/* fonts */
+
+/* dm-mono-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: local("DM Mono Medium"),
+    url('/static/fonts/dm-mono-v14-latin-500.woff2') format('woff2'),
+    url('/static/fonts/dm-mono-v14-latin-500.ttf') format('truetype');
+}
+
+/* dm-sans-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local("DM Sans Medium"),
+    url('/static/fonts/dm-sans-v15-latin-500.woff2') format('woff2'),
+    url('/static/fonts/dm-sans-v15-latin-500.ttf') format('truetype');
+}
+
+/* dm-sans-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local("DM Sans Bold"),
+    url('/static/fonts/dm-sans-v15-latin-700.woff2') format('woff2'),
+    url('/static/fonts/dm-sans-v15-latin-700.ttf') format('truetype');
+}
+
+/* dm-serif-display-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/static/fonts/dm-serif-display-v15-latin-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/static/fonts/dm-serif-display-v15-latin-regular.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+h1 {
+  color: var(--primary-content);
+  font-family: var(--header-font);
+  font-size: 2em;
+}
+
+h2 {
+  color: var(--copy-light);
+  font-family: var(--text-font);
+  font-weight: 500;
+  font-size: 1.5em;
+}

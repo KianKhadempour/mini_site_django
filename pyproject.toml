@@ -9,3 +9,8 @@ dependencies = [
     "django>=5.1.2",
     "setuptools>=75.1.0",
 ]
+
+[tool.uv]
+dev-dependencies = [
+    "djlint>=1.35.2",
+]

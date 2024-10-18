@@ -1,31 +1,50 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Teams
+{% endblock title %}
+{% block extendhead %}
+  <link rel="stylesheet" href="{% static 'teams/css/style.css' %}" />
+  <script defer>
+    (async () => {
+      const response = await fetch("{% url 'teams-chart' %}");
+      const data = await response.json();
+    
+      const ctx = document.getElementById('chart');
+      Chart.defaults.color = getComputedStyle(document.body).getPropertyValue('--copy');
+      Chart.defaults.font.family = getComputedStyle(document.body).getPropertyValue('--text-font');
+      Chart.defaults.font.size = 16;
+      new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { suggestedMin: 0 }
+          }
+        }
+      });
+    })();
+  </script>
+{% endblock extendhead %}
+{% block header %}
+  <h1>Teams</h1>
+{% endblock header %}
 {% block content %}
-  <div class="section">
-    <div class="columns">
-      <div class="column has-text-centered">
-        <h1 class="title">Teams</h1><br />
-      </div>
-    </div>
-    <div id="app" class="grid">
+  <main>
+    <section class="teams">
       {% for team in teams %}
-        <div class="cell">
-          <a href="{% url 'teams:team_detail' team.id %}">
-            <div class="card large equal-height is-hoverable">
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4 p-0">{{ team.name }}</p>
-                  </div>
-                </div>
-                <div class="content has-text-centered points-wrapper">
-                  <h1 class="points">{{ team.points }}</h1>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+        <a href="{{ team.get_absolute_url }}" class="card">
+          <h2>{{ team.name }}</h2>
+          <p class="points">{{ team.points }}</p>
+        </a>
       {% endfor %}
-    </div>
-  </div>
-{% endblock %}
+    </section>
+    <section class="chart">
+      <h2>Points Over Time</h2>
+      <div>
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+  </main>
+{% endblock content %}

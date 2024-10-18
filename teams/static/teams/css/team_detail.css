@@ -1,0 +1,160 @@
+/* variables */
+:root {
+  --header-brightness: -5;
+  --even-brightness: -2;
+  --odd-brightness: 2;
+  --on-hover-delta: 3;
+}
+
+/* mini reset */
+body {
+  margin: 0;
+  background-color: var(--background);
+}
+
+/* fonts */
+th,
+td {
+  color: var(--copy);
+  font-family: var(--text-font);
+
+}
+
+/* base styles */
+header {
+  background-color: var(--primary);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.tables {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.table {
+  background-color: var(--foreground);
+  border: 3px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+
+  & h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid var(--border);
+
+
+  & tr {
+    background-color: var(--foreground);
+  }
+
+  & thead {
+    & tr {
+      background-color: hsl(from var(--foreground) h s calc(l + var(--header-brightness)));
+    }
+
+    & tr:hover {
+      background-color: hsl(from var(--foreground) h s calc(calc(l + var(--header-brightness)) + var(--on-hover-delta)));
+    }
+  }
+
+  & tbody {
+    & tr:nth-child(even) {
+      background-color: hsl(from var(--foreground) h s calc(l + var(--even-brightness)));
+    }
+
+    & tr:nth-child(even):hover {
+      background-color: hsl(from var(--foreground) h s calc(calc(l + var(--even-brightness)) + var(--on-hover-delta)));
+    }
+
+    & tr:nth-child(odd) {
+      background-color: hsl(from var(--foreground) h s calc(l + var(--odd-brightness)));
+    }
+
+    & tr:nth-child(odd):hover {
+      background-color: hsl(from var(--foreground) h s calc(calc(l + var(--odd-brightness)) + var(--on-hover-delta)));
+    }
+  }
+
+  & th,
+  & td {
+    border: 2px solid var(--border);
+    padding: 5px;
+  }
+}
+
+div.abbr[text] {
+  position: relative;
+  display: inline-block;
+  /* ensure consistent styling across browsers */
+  text-decoration: underline dotted;
+}
+
+div.abbr[text]:hover::after,
+div.abbr[text]:focus::after {
+  content: attr(text);
+
+  /* position tooltip like the native one */
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  width: 300px;
+  z-index: 1;
+  /* white-space: nowrap; */
+
+  /* style tooltip */
+  background-color: var(--background);
+  color: var(--copy);
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  padding: 3px 5px;
+}
+
+.chart {
+  background-color: var(--foreground);
+  padding: 0.8rem 1rem;
+  grid-column: span 4;
+
+  & div {
+    min-height: 300px;
+  }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 620px) {
+  .tables {
+    flex-direction: row;
+  }
+
+  .table {
+    flex-grow: 1;
+    height: fit-content;
+  }
+
+  .chart {
+    margin: 1rem auto;
+    border: 3px solid var(--border);
+    border-radius: 20px;
+    width: clamp(500px, 80%, 900px);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 1.24rem;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+}

@@ -18,7 +18,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from teams import views
+
 urlpatterns = [
     path("teams/", include("teams.urls")),
+    path(
+        "charts/teams/",
+        views.TeamsChartView.as_view(),
+        name="teams-chart",
+    ),
+    path(
+        "charts/teams/<int:pk>/",
+        views.TeamChartView.as_view(),
+        name="team-chart",
+    ),
     path("admin/", admin.site.urls),
 ]

@@ -1,0 +1,31 @@
+team,points,name,description,created_at
+1,10,Charity Drive,Collected donations for local shelter,2024-09-12 10:30:00
+2,15,Sports Day Victory,,2024-03-14 14:15:00
+3,5,Class Participation,,2024-01-15 09:45:00
+4,-5,Late Assignment,,2024-10-16 08:20:00
+5,20,Science Fair Winner,,2024-04-18 13:00:00
+1,8,Volunteering,,2024-05-20 11:30:00
+2,-10,Unexcused Absence,,2024-02-21 09:00:00
+3,12,Art Competition,,2024-05-23 12:45:00
+4,7,Math Contest,,2024-03-25 15:10:00
+5,5,Team Effort,,2024-09-26 09:50:00
+1,-7,Disciplinary Action,,2024-10-28 08:40:00
+2,18,Reading Challenge,,2024-01-30 16:00:00
+3,-5,Tardy,,2024-11-01 09:15:00
+4,10,Quiz Winner,,2024-06-03 10:30:00
+5,25,Community Service,Participated in beach cleanup,2024-06-04 14:20:00
+1,-10,Breaking School Rules,Caught using phone during class,2024-03-06 11:45:00
+2,8,Music Performance,,2024-05-07 13:30:00
+3,-8,Missed Deadline,,2024-06-08 17:20:00
+4,5,Good Conduct,,2024-09-09 09:50:00
+5,-12,Bullying Incident,Involved in bullying a classmate,2024-11-11 08:10:00
+1,15,Environmental Project,,2024-04-12 14:00:00
+2,-7,Class Disruption,,2024-02-13 09:05:00
+3,20,Art Exhibition,,2024-01-14 11:30:00
+4,10,Essay Contest,,2024-11-15 13:45:00
+5,7,Debate Tournament,,2024-05-16 16:20:00
+1,12,Peer Tutoring,,2024-06-17 10:40:00
+2,5,Study Group,,2024-02-18 14:30:00
+3,-5,Disrespectful Behaviour,,2024-10-19 08:50:00
+4,18,Science Olympiad,,2024-03-20 12:10:00
+5,-10,Skipping Class,,2024-11-21 09:00:00
