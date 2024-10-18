@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 class TeamManager(models.Manager):
-    def points(self):
+    def all_points(self):
         return [team.points() for team in self.all()]
 
     def pointevents(self):
