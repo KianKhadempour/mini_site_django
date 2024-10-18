@@ -63,7 +63,7 @@ class Month(enum.StrEnum):
         ]
 
     def __repr__(self) -> str:
-        return self.value
+        return f"Month({self.value})"
 
 
 class Team(models.Model):
@@ -75,7 +75,7 @@ class Team(models.Model):
         return self.name
 
     def __repr__(self):
-        return f'Team(name="{self.name}", points={self.points()})'
+        return f"Team(name='{self.name}', points={self.points()})"
 
     def get_absolute_url(self):
         return reverse("teams:team_detail", args=[self.pk])
@@ -136,7 +136,7 @@ class Student(models.Model):
         return f"{self.first_name} {self.last_name} ({self.grade})"
 
     def __repr__(self):
-        return f'Student(team="{self.team}", first_name="{self.first_name}", last_name="{self.last_name}", grade={self.grade})'
+        return f"Student(team='{self.team}', first_name='{self.first_name}', last_name='{self.last_name}', grade={self.grade})"
 
 
 class CurrentSchoolYearManager(models.Manager):
@@ -151,7 +151,7 @@ class CurrentSchoolYearManager(models.Manager):
         return (
             super()
             .get_queryset()
-            .filter(created_at__gte=start_date, created_at__lt=end_date)
+            .filter(created_at__gte=start_date, created_at__lte=end_date)
         )
 
 
@@ -175,4 +175,4 @@ class PointEvent(models.Model):
         return f"{self.name} ({self.team} {self.points})"
 
     def __repr__(self):
-        return f"PointEvent(team={self.team}, points={self.points}, name={self.name}, description={truncate(self.description)}, created_at={self.created_at})"
+        return f"PointEvent(team='{self.team}', points={self.points}, name='{self.name}', description='{truncate(self.description)}', created_at={repr(self.created_at)})"
