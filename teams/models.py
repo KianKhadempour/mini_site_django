@@ -8,12 +8,6 @@ from django.utils import timezone
 
 
 class TeamManager(models.Manager):
-    def all_points(self):
-        return [team.points() for team in self.all()]
-
-    def pointevents(self):
-        return [team.pointevent_set.all() for team in self.all()]
-
     def point_total_histories(self):
         return [list(team.point_total_history().values()) for team in self.all()]
 
@@ -142,7 +136,7 @@ class Student(models.Model):
         return f"{self.first_name} {self.last_name} ({self.grade})"
 
     def __repr__(self):
-        return f"Student(team={self.team}, first_name={self.first_name}, last_name={self.last_name}, grade={self.grade})"
+        return f'Student(team="{self.team}", first_name="{self.first_name}", last_name="{self.last_name}", grade={self.grade})'
 
 
 class CurrentSchoolYearManager(models.Manager):
