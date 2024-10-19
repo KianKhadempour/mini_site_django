@@ -5,14 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="Mini Teams" />
-    <meta name="keywords" content="templaton mini school">
+    <meta name="keywords" content="templeton mini school">
     <title>
       {% block title %}
       {% endblock title %}
     </title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="{% static 'teams/css/shared.css' %}" />
+    <link rel="preload"
+          href="{% static 'teams/fonts/dm-sans-v15-latin-500.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin>
+    <link rel="preload"
+          href="{% static 'teams/fonts/dm-serif-display-v15-latin-regular.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin>
     <link rel="apple-touch-icon"
           sizes="180x180"
           href="{% static 'teams/icons/apple-touch-icon.png' %}" />
@@ -24,8 +31,14 @@
           type="image/png"
           sizes="16x16"
           href="{% static 'teams/icons/favicon-16x16.png' %}" />
+    <link rel="shortcut icon"
+          type="image/png"
+          href="{% static 'favicon.ico' %}" />
     <link rel="manifest" href="{% static 'teams/site.webmanifest' %}" />
-    <script defer type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'teams/js/Chart.min.js' %}"></script>
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'teams/css/shared.css' %}" />
     {% block extendhead %}
     {% endblock extendhead %}
   </head>

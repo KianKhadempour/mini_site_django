@@ -2,6 +2,7 @@ import datetime as dt
 import enum
 from calendar import JUNE, SEPTEMBER
 
+from colorfield.fields import ColorField
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -68,6 +69,7 @@ class Month(enum.StrEnum):
 
 class Team(models.Model):
     name = models.CharField(max_length=127)
+    color = ColorField(default="#ee84d7")
 
     objects = TeamManager()
 
@@ -75,7 +77,7 @@ class Team(models.Model):
         return self.name
 
     def __repr__(self):
-        return f"Team(name='{self.name}', points={self.points()})"
+        return f"Team(name='{self.name}', color='{self.color}', points={self.points()})"
 
     def get_absolute_url(self):
         return reverse("teams:team_detail", args=[self.pk])

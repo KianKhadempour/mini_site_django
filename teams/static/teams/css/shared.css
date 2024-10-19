@@ -57,8 +57,8 @@ a {
   font-style: normal;
   font-weight: 500;
   src: local("DM Mono Medium"),
-    url('/static/fonts/dm-mono-v14-latin-500.woff2') format('woff2'),
-    url('/static/fonts/dm-mono-v14-latin-500.ttf') format('truetype');
+    url('/static/teams/fonts/dm-mono-v14-latin-500.woff2') format('woff2'),
+    url('/static/teams/fonts/dm-mono-v14-latin-500.ttf') format('truetype');
 }
 
 /* dm-sans-500 - latin */
@@ -68,8 +68,8 @@ a {
   font-style: normal;
   font-weight: 500;
   src: local("DM Sans Medium"),
-    url('/static/fonts/dm-sans-v15-latin-500.woff2') format('woff2'),
-    url('/static/fonts/dm-sans-v15-latin-500.ttf') format('truetype');
+    url('/static/teams/fonts/dm-sans-v15-latin-500.woff2') format('woff2'),
+    url('/static/teams/fonts/dm-sans-v15-latin-500.ttf') format('truetype');
 }
 
 /* dm-sans-700 - latin */
@@ -79,8 +79,8 @@ a {
   font-style: normal;
   font-weight: 700;
   src: local("DM Sans Bold"),
-    url('/static/fonts/dm-sans-v15-latin-700.woff2') format('woff2'),
-    url('/static/fonts/dm-sans-v15-latin-700.ttf') format('truetype');
+    url('/static/teams/fonts/dm-sans-v15-latin-700.woff2') format('woff2'),
+    url('/static/teams/fonts/dm-sans-v15-latin-700.ttf') format('truetype');
 }
 
 /* dm-serif-display-regular - latin */
@@ -90,9 +90,9 @@ a {
   font-family: 'DM Serif Display';
   font-style: normal;
   font-weight: 400;
-  src: url('/static/fonts/dm-serif-display-v15-latin-regular.woff2') format('woff2'),
+  src: url('/static/teams/fonts/dm-serif-display-v15-latin-regular.woff2') format('woff2'),
     /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-    url('/static/fonts/dm-serif-display-v15-latin-regular.ttf') format('truetype');
+    url('/static/teams/fonts/dm-serif-display-v15-latin-regular.ttf') format('truetype');
   /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 

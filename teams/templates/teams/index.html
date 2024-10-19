@@ -4,10 +4,15 @@
   Teams
 {% endblock title %}
 {% block extendhead %}
+  <link rel="preload"
+        href="{% static 'teams/fonts/dm-mono-v14-latin-500.woff2' %}"
+        as="font"
+        type="font/woff2"
+        crossorigin>
   <link rel="stylesheet" href="{% static 'teams/css/style.css' %}" />
   <script defer>
     (async () => {
-      const response = await fetch("{% url 'teams-chart' %}");
+      const response = await fetch("{% url 'teams:teams_chart' %}");
       const data = await response.json();
     
       const ctx = document.getElementById('chart');
@@ -36,7 +41,7 @@
       {% for team in teams %}
         <a href="{{ team.get_absolute_url }}" class="card">
           <h2>{{ team.name }}</h2>
-          <p class="points">{{ team.points }}</p>
+          <p class="points" style="color: {{ team.color }}">{{ team.points }}</p>
         </a>
       {% endfor %}
     </section>

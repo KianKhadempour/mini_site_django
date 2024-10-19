@@ -67,8 +67,12 @@ class TeamModelTests(TestCase):
         self.assertEqual(str(self.team_two), "Team Two")
 
     def test_team_repr(self):
-        self.assertEqual(repr(self.team_one), "Team(name='Team One', points=6)")
-        self.assertEqual(repr(self.team_two), "Team(name='Team Two', points=15)")
+        self.assertEqual(
+            repr(self.team_one), "Team(name='Team One', color='#ee84d7' points=6)"
+        )
+        self.assertEqual(
+            repr(self.team_two), "Team(name='Team Two', color='#ee84d7', points=15)"
+        )
 
     def test_team_points(self):
         self.assertEqual(self.team_one.points(), 6)
